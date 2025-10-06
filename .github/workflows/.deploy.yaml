@@ -50,7 +50,6 @@ jobs:
             # Activate cPanel Node environment if available
             source ~/nodevenv/"$APP_DIR"/${NODE_VER}/bin/activate 2>/dev/null || true
 
-            yarn prisma migrate deploy
-            yarn prisma generate
-            yarn build
-            yarn passenger:refresh
+            npm install 
+            npm run build
+            pm2 start "npm run start" --name "test-react"
